@@ -20,14 +20,12 @@ public class ProductController {
         this.productService = productService;
     }
 
-    // Endpoint สำหรับการสร้าง Product (POST /api/v1/products/create)
     @PostMapping("/create")
     public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductCreateRequest request) {
         ProductResponse product = productService.createProduct(request);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
-    // Endpoint สำหรับการดึง Product รายการเดียวด้วย ID (GET /api/v1/products/get/{id})
     @GetMapping("/get/{id}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable String id) {
         ProductResponse product = productService.getProductById(id);
@@ -35,7 +33,6 @@ public class ProductController {
     }
 
 
-    // Endpoint สำหรับการค้นหา Product (GET /api/v1/products/search)
     @PostMapping("/search")
     public ResponseEntity<List<ProductResponse>> searchProducts(
             @RequestBody ProductSearchRequest request,

@@ -14,8 +14,6 @@ import org.springframework.data.elasticsearch.core.query.Criteria;
 import org.springframework.data.elasticsearch.core.query.CriteriaQuery;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-//import org.springframework.util.ObjectUtils;
-//import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.List;
 import java.util.UUID;
@@ -54,7 +52,7 @@ return  productMapper.toProductResponse(product);
     public List<ProductResponse> searchProducts(ProductSearchRequest request, int page, int size) {
         Criteria criteria = new Criteria();
 
-        // ค้นหา keyword ใน name หรือ description
+        //  keyword  name  description
         if (StringUtils.isNotBlank(request.getKeyword())) {
             Criteria nameContains = new Criteria("name")
                     .contains(request.getKeyword())
@@ -64,14 +62,14 @@ return  productMapper.toProductResponse(product);
             criteria = criteria.or(nameContains).or(descContains);
         }
 
-        // filter ด้วย tags
+        // filter tags
         if (!CollectionUtils.isEmpty(request.getTags())) {
             for (String tag : request.getTags()) {
                 criteria = criteria.and(new Criteria("tags").is(tag));
             }
         }
 
-        // filter ด้วย price from
+        // filter  price from
         if (request.getPriceFrom() != null) {
             criteria = criteria.and(new Criteria("price").greaterThanEqual(request.getPriceFrom()));
         }
