@@ -1,6 +1,13 @@
 # 🧠 Elasticsearch Local Setup
 
-โปรเจกต์นี้เป็นตัวอย้่งการสร้าง CRUD **Elasticsearch** แบบ local ด้วย **Docker Compose**  
+โปรเจกต์นี้เป็นตัวอย้่งการสร้าง CRUD **Elasticsearch** แบบ local ด้วย **Docker Compose** ในภาษา Java
+
+Before you begin, make sure you have the following installed:
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Java 17+](https://adoptium.net/) (if running local backend)
+- [Maven](https://maven.apache.org/) (optional if using wrapper)
 
 --
 
